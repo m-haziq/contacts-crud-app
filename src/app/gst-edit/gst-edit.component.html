@@ -27,10 +27,13 @@
           <div *ngIf="angForm.controls['contact_gst_number'].errors.required">
             Phone Number is required.
           </div>
+          <div *ngIf="angForm.controls['contact_gst_number'].errors.pattern">
+            Phone Number is not valid.
+          </div>
         </div>
         <div class="form-group">
           <button (click)="updateContact(person_name.value, contact_name.value, contact_gst_number.value)"
-          [disabled]="angForm.invalid" 
+          [disabled]="angForm.invalid"
           class="btn btn-primary">Update Contact</button>
         </div>
       </form>

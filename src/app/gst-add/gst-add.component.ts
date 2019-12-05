@@ -14,7 +14,7 @@ export class GstAddComponent implements OnInit {
   constructor(
       private route: ActivatedRoute,
       private router: Router,
-      private fb: FormBuilder, 
+      private fb: FormBuilder,
       private contactService: ContactService
     ) {
     this.createForm();
@@ -23,14 +23,14 @@ export class GstAddComponent implements OnInit {
   createForm() {
     this.angForm = this.fb.group({
       person_name: ['', Validators.required ],
-      contact_name: ['', Validators.required ],
-      contact_gst_number: ['', Validators.required ]
+      contact_name: ['', Validators.required],
+      contact_gst_number: ['', [Validators.required, Validators.pattern('^[0-9]*$')]]
     });
   }
 
   addContact(person_name, contact_name, contact_gst_number) {
     this.contactService
-      .addContact(person_name, contact_name, contact_gst_number)      
+      .addContact(person_name, contact_name, contact_gst_number)
       .subscribe(res => {
         this.router.navigate(['/']);
       },

@@ -24,10 +24,10 @@ export class GstEditComponent implements OnInit {
     this.angForm = this.fb.group({
         person_name: ['', Validators.required ],
         contact_name: ['', Validators.required ],
-        contact_gst_number: ['', Validators.required ]
+        contact_gst_number: ['', [Validators.required, Validators.pattern('^[0-9]*$')] ]
       });
   }
-  
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log(params['id']);
@@ -46,7 +46,7 @@ export class GstEditComponent implements OnInit {
         err => {
           console.log('errDone', err);
         });
-       
+
     });
   }
 }
