@@ -21,7 +21,7 @@ python manage.py runserver
 
 In order to run the tests:
 ```
-python manage.py test
+pytest --json-report  --json-report-file report.json
 ```
 
 
